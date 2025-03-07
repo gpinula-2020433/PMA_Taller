@@ -62,7 +62,6 @@ const costoCarrito = (lista) =>{
 costoCarrito(carrito)
 
 console.log(`---------------`)
-
 const inventario = [
     {
       id: 1,
@@ -105,5 +104,33 @@ const buscarPorId =(listaInventario, id)=>{
 `)
 }
 
+const realizarCompra = (listaInventario, id, cantidad) => {
+    const producto = listaInventario.find(p => p.id === id)
+    if (producto) {
+        if (producto.stock >= cantidad) {
+            producto.stock -= cantidad
+            const costoTotal = producto.precio * cantidad
+            console.log(`Compra exitosa! Costo total: Q${costoTotal}.`)
+            console.log(`Stock restante del producto ${producto.nombre}: ${producto.stock}`)
+        } else {
+            console.log(`No hay suficiente stock. Solo hay ${producto.stock} unidades disponibles.`)
+        }
+    } else {
+        console.log("Producto no encontrado.")
+    }
+}
+
+const calcularValorInventario = (listaInventario) => {
+    let valorTotal = 0
+    listaInventario.forEach(producto => {
+        valorTotal += producto.precio * producto.stock
+    })
+    console.log(`Valor total del inventario: Q${valorTotal}`)
+}
+
 listarInventario(inventario)
 buscarPorId(inventario, 2)
+realizarCompra(inventario, 1, 5) //id, cantidad
+calcularValorInventario(inventario)
+console.log('')
+listarInventario(inventario)

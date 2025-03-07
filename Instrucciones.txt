@@ -53,6 +53,8 @@ Realiza las siguientes operaciones:
 
 Lista todos los productos en el inventario con su información detallada.
 Busca un producto por su id y muestra su información.
+
+
 Permite realizar una "compra" simulada:
 Se recibe el id del producto y la cantidad deseada.
 Si hay suficiente stock, actualiza el inventario y muestra el costo total de la compra.
